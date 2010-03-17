@@ -2,7 +2,7 @@ Termtter 1.0 をリリースしました
 本日2009年3月15日、Termtter の最新安定版であるバージョン1.0をリリースしました。Termtterはターミナルエミュレータ上で動作する Twitter クライアントで、拡張性に極端に優れているという特徴があります。フィボナッチ数列を計算する機能が標準で提供されている、世界で唯一のtwitterクライアントです。
 
 == インストール
-  sudo gem install termtter
+  gem install termtter
 
 == 使い方
 termtterを起動すると、初回はあなたのtwitterアカウントとパスワードが聞かれます。それによって設定ファイル~/.termtter/configが生成され、同時にtermtterが起動します。"u Hello, world!"などと書いてエンターキーを叩くことによって、termtterからtwitterに発言することができます。

@@ -5,7 +5,7 @@
 #
 # == requirements
 # * twitpic
-#  sudo gem install twitpic
+#  gem install twitpic
 #
 # == TODO
 # * スペースの混じったファイル名を扱えるようにする

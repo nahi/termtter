@@ -2,7 +2,7 @@ Termtter 1.0 Released
 Today March 15, 2009, we have released Termtter 1.0 as a stable version. Termtter is a twitter client software working on terminal emulators, which is very easy to extend functions. Termtter is the only one twitter client which can calculates fibonacci numbers congenitally.
 
 == INSTALLATION
-  sudo gem install termtter
+  gem install termtter
 
 == HOW TO USE
 Termtter will ask you what are your twitter account(email) and password are when you boot termtter for the first time. Termtter will make a config file ~/.termtter/config and will boot. Now you can post messages to twitter by typing "u Hello, world!" and return key on the termtter.

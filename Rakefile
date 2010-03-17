@@ -22,7 +22,7 @@ begin
     gem.extra_rdoc_files = ["README.rdoc", "ChangeLog"]
   end
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
 require 'spec/rake/spectask'

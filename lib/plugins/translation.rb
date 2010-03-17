@@ -35,4 +35,4 @@ Termtter::Client.register_command(
 
 # This plugin does not work yet.
 # requirements
-#   nokogiri (sudo gem install nokogiri)
+#   nokogiri (gem install nokogiri)
