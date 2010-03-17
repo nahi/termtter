@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*
 
 require 'tempfile'
-require 'rubygems'
 require 'giic'
 
 module Termtter::Client

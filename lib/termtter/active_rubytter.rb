@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-gem 'rubytter', '>= 0.6.5'
 require 'rubytter'
 
 module Termtter

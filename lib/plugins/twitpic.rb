@@ -10,7 +10,6 @@
 # == TODO
 # * スペースの混じったファイル名を扱えるようにする
 
-gem "twitpic", ">=0.3.1"
 require 'twitpic'
 
 module Termtter::Client
