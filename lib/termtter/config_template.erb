@@ -9,10 +9,28 @@ config.user_name = '<%= user_name %>'
 #config.proxy.port = '8080'
 #config.proxy.user_name = 'proxy user'
 #config.proxy.password = 'proxy password'
-
 config.plugins.keyword.keywords = ["@<%= user_name %>"]
 config.confirm = true
 #config.plugins.stdout.colors = (31..36).to_a + (91..96).to_a
+
+config.rubytter_driver = 'Rubytter'
+config.rubytter_driver_params = {
+  :password => nil
+}
+
+# xAuth setting.
+# You need to obtain consumer token and it must be xAuth enabled.
+#config.rubytter_driver = 'OAuthRubytter'
+#config.rubytter_driver_params = {
+#  :password => nil,
+#  :consumer => {
+#    :key => 'consumer_key',
+#    :secret => 'consumer_secret'
+#  }
+#}
+#config.enable_ssl = false
+
+#config.wiredump = '/tmp/termtter.log'
 
 Termtter::Client.init do |t|
   <%- (plugins - standard_plugins).each do |plugin| -%>

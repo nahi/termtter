@@ -4,9 +4,10 @@ require File.dirname(__FILE__) + '/../spec_helper'
 module Termtter
   describe RubytterProxy do
     before do
+      config.rubytter_driver = 'Rubytter'
       @rubytter_mock = Object.new
       Rubytter.stub!(:new).and_return(@rubytter_mock)
-      @twitter = RubytterProxy.new('foo', 'bar', {})
+      @twitter = RubytterProxy.new(config, {})
     end
 
     it 'should call a Rubytter\'s method' do

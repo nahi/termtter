@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-config.set_default(:host, 'twitter.com')
+config.set_default(:host, 'api.twitter.com')
 if ENV.has_key?('HTTP_PROXY')
   require 'uri'
   proxy = ENV['HTTP_PROXY']
@@ -23,7 +23,7 @@ else
 end
 config.proxy.set_default(:user_name, nil)
 config.proxy.set_default(:password, nil)
-config.set_default(:enable_ssl, false)
+config.set_default(:enable_ssl, true)
 
 module Termtter
   module API
@@ -48,7 +48,7 @@ module Termtter
       end
 
       def try_auth
-        if config.user_name.empty? || config.password.empty?
+        if config.user_name.empty? || need_password?
           puts 'Please enter your Twitter login:'
         end
 
@@ -59,11 +59,11 @@ module Termtter
         else
           puts "Username: #{config.user_name}"
         end
-        if config.password.empty?
+        if need_password?
           config.password = ui.ask('Password: ') { |q| q.echo = false}
         end
 
-        twitter = RubytterProxy.new(config.user_name, config.password, twitter_option)
+        twitter = RubytterProxy.new(config, twitter_option)
         begin
           twitter.verify_credentials
           return twitter
@@ -87,8 +87,15 @@ module Termtter
           :proxy_host => config.proxy.host,
           :proxy_port => config.proxy.port,
           :proxy_user_name => config.proxy.user_name,
-          :proxy_password => config.proxy.password
+          :proxy_password => config.proxy.password,
+          :wiredump => config.wiredump
         }
+      end
+
+      def need_password?
+        params = config.rubytter_driver_params
+        config.password.empty? &&
+          params && params.key?(:password) && params[:password].nil?
       end
     end
   end

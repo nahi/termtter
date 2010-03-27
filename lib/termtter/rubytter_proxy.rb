@@ -7,8 +7,11 @@ module Termtter
 
     attr_reader :rubytter
 
-    def initialize(*args)
-      @rubytter = Rubytter.new(*args)
+    def initialize(config, options)
+      rubytter = config.rubytter_driver || 'Rubytter'
+      params = config.rubytter_driver_params.merge(:user_name => config.user_name)
+      params[:password] ||= config.password if params.key?(:password)
+      @rubytter = const_from_name(rubytter).new(params, options)
     end
 
     def method_missing(method, *args, &block)
@@ -104,6 +107,10 @@ module Termtter
         end
       end
       raise TimeoutError, 'execution expired'
+    end
+
+    def const_from_name(fqname)
+      fqname.split("::").inject(Kernel) { |klass, name| klass.const_get(name) }
     end
   end
 end

@@ -444,11 +444,14 @@ module Termtter
     it 'gets default help' do
       Client.plug 'defaults' # FIXME: Do not need
       $stdout, old_stdout = StringIO.new, $stdout # FIXME That suspends any debug informations!
-      help_command = Client.get_command(:help)
-      help_command.should_not be_nil
-      help_command.call
-      $stdout.string.should_not == '' # 何がか出力されていること
-      $stdout = old_stdout
+      begin
+        help_command = Client.get_command(:help)
+        help_command.should_not be_nil
+        help_command.call
+        $stdout.string.should_not == '' # 何がか出力されていること
+      ensure
+        $stdout = old_stdout
+      end
     end
 
     it 'gets an added help' do

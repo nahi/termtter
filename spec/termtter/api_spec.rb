@@ -5,6 +5,12 @@ require File.dirname(__FILE__) + '/../spec_helper'
 module Termtter
 
   describe API do
+    before do
+      config.rubytter_driver = 'Rubytter'
+      config.rubytter_driver_params = {
+        :password => nil
+      }
+    end
 
     it 'tries authenticate 3 times' do
       API.should_receive(:try_auth).
@@ -22,8 +28,8 @@ module Termtter
     end
 
     def it_should_examine_with(name, pass, options = {})
-      config.user_name = name if name
-      config.password  = pass if pass
+      config.user_name = name || ''
+      config.password  = pass || ''
 
       dummy_out = mock('stdout')
       dummy_out.stub(:ask) do |ask, _|
